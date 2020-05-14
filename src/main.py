@@ -11,8 +11,10 @@ while True:
         print("exit")
         break
 
-def initialize:
+def initialize():
     # ゲームの初期化処理
+    return 0
 
-def commandPerse:
+def commandPerse():
     # コマンドの解釈
+    return 0
