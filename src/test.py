@@ -2,6 +2,14 @@
 # -*- coding:utf-8 -*-
 
 # AIは現在のラウンド数、プレイヤーとAIのリソース、ダイスの組成、ボードの状態を参照して何らかの手を出力する？
+import DiceForge
+import DIce_compositioni
+import Boards
+import Cards
+import Resorce
+import Player
+import User
+import Computer
 
 class DiceForge:
 
@@ -14,11 +22,10 @@ class DiceForge:
         round = 0 
         # 以下ターンが交互に回ってきてラウンドが経過していく処理をDiceForge内に実装したい
 
-　　# リソース(カード含める？)を参照して試合結果を表示する　
+    # リソース(カード含める？)を参照して試合結果を表示する　
     def show_result(self, Resorce):
 
-
-class dice_composition:
+class Dice_composition:
 
 class Board:
     # 最初の盤面を定義する
@@ -34,7 +41,7 @@ class Board:
 class Resorce:
 
 
-class Card:
+class Cards:
 
 class Player:
 
