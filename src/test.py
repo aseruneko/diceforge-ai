@@ -24,17 +24,45 @@ class Board:
     # 最初の盤面を定義する
     def __init__(self):
 
-    def plyable_dice_face()
+    def playable_dice_face()
 
     def playable_cards()
 
 
+
+
 class Resorce:
+
+
+class Card:
+
+class Player:
+
+    def __init__(self, resorce, cards):
+
+    # ダイスロール
+    def dicerole(self, dice_composition):
+    
+    # カードの常在型アクション
+    def card_action(self, cards):
+    
+    # 購入アクション
+    def buy(self, resorce, board):
+
+    
+     
+class User(Player):
+    
+    # プレイヤーの手番の処理を行う関数
+    def action(self, board, resorce, cards):
+
 
 class Computer(Player):
 
-class User(Player)
+
+
+
 
 
 if __name__ = '__main__':
-    DiceForge().plya()
+    DiceForge().play()
