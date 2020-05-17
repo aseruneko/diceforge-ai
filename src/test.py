@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+
+# AIは現在のラウンド数、プレイヤーとAIのリソース、ダイスの組成、ボードの状態を参照して何らかの手を出力する？
+
+class DiceForge:
+
+    # ゲームの実際の流れを実装
+    def play(self):
+        board = Board()
+        player1 = computer = Computer()
+        player2 = user = User()
+
+        round = 0 
+        # 以下ターンが交互に回ってきてラウンドが経過していく処理をDiceForge内に実装したい
+
+　　# リソース(カード含める？)を参照して試合結果を表示する　
+    def show_result(self, Resorce):
+
+
+class dice_composition:
+
+class Board:
+    # 最初の盤面を定義する
+    def __init__(self):
+
+    def plyable_dice_face()
+
+    def playable_cards()
+
+
+class Resorce:
+
+class Computer(Player):
+
+class User(Player)
+
+
+if __name__ = '__main__':
+    DiceForge().plya()
