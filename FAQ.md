@@ -44,7 +44,7 @@ https://techacademy.jp/magazine/6235)
 
 コマンドプロンプト上で
 
-`git clone https://github.com/aseruneko/aseruneko.github.io.git`
+`git clone https://github.com/aseruneko/diceforge-ai.git`
 
 ディレクトリの設置場所を調整したい人はwindowsの場合、cd（階層の移動）とdir（現在いる階層のファイルとディレクトリ一覧を表示）を駆使して移動してから上記コマンドを打ってください。
 
