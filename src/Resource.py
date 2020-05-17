@@ -2,14 +2,14 @@
 # -*- coding:utf-8 -*-
 
 """
-definition of resorce
+definition of Resource
 """
 
 __author__ = "aseruneko"
 __status__ = "production"
 __date__ = "17 May 2020"
 
-class Resorce:
+class Resource:
 
     INITIAL_GOLD_MAX = 12
     INITIAL_SUN_MAX = 6
@@ -20,9 +20,9 @@ class Resorce:
         self.sun = 0
         self.moon = 0
         self.victory_point = 0
-        self.gold_max = Resorce.INITIAL_GOLD_MAX
-        self.sun_max = Resorce.INITIAL_SUN_MAX
-        self.moon_max = Resorce.INITIAL_MOON_MAX
+        self.gold_max = Resource.INITIAL_GOLD_MAX
+        self.sun_max = Resource.INITIAL_SUN_MAX
+        self.moon_max = Resource.INITIAL_MOON_MAX
 
     def add_gold(self, addition):
         self.gold += addition
@@ -82,11 +82,11 @@ class Resorce:
 # test code
 if __name__ == '__main__':
 
-    resorce = Resorce()
-    resorce.print_all_variables()
+    resource = Resource()
+    resource.print_all_variables()
 
-    resorce.add_gold(1)
-    resorce.add_sun(2)
-    resorce.add_moon(3)
-    resorce.add_victory_point(4)
-    resorce.print_all_variables()
+    resource.add_gold(1)
+    resource.add_sun(2)
+    resource.add_moon(3)
+    resource.add_victory_point(4)
+    resource.print_all_variables()
