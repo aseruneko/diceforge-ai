@@ -1,20 +1,51 @@
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
 
-# main.py
-# @author aseruneko
+"""
+Main class of diceforge-ai
+Please execute this file.
+"""
 
-# メインです。このファイルを実行してください。
+__author__ = "aseruneko"
+__version__ = "0.0.1a"
+__status__ = "production"
+__date__ = "18 May 2020"
 
-while True:
-    print("command? > "),
-    command = input()
+# import DiceForge
+
+exit_flag = False
+
+def main():
+    print_title()
+    while(not exit_flag):
+        print("\n> command?"),
+        command = input()
+        command_perse(command)
+
+def print_title():
+    output = "\n"
+    output += "******************************\n"
+    output += "* diceforge-ai ver 0.0.1a\n"
+    output += "******************************\n\n"
+    output += "tips: help command provides index of command"
+    print(output)
+
+def command_perse(command):
     if command == "exit":
-        print("exit")
-        break
+        global exit_flag 
+        exit_flag = True
+    if command == "help":
+        print_help()
+    if command == "start":
+        print("> game starts...")
+        # dice_forge = DiceForge()
 
-def initialize():
-    # ゲームの初期化処理
-    return 0
+def print_help():
+    output = "\n"
+    output += "help\t-\tshow help\n"
+    output += "exit\t-\texit program\n"
+    output += "start\t-\tstart game"
+    print(output)
 
-def commandPerse():
-    # コマンドの解釈
-    return 0
+if __name__ == '__main__':
+    main()
