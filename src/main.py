@@ -11,7 +11,7 @@ __version__ = "0.0.1a"
 __status__ = "production"
 __date__ = "18 May 2020"
 
-# import DiceForge
+import DiceForge
 
 exit_flag = False
 
@@ -38,7 +38,8 @@ def command_perse(command):
         print_help()
     if command == "start":
         print("> game starts...")
-        # dice_forge = DiceForge()
+        dice_forge = DiceForge.DiceForge()
+        dice_forge.game()
 
 def print_help():
     output = "\n"
