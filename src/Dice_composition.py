@@ -49,7 +49,7 @@ class Face:
         self.tag = tag
         self.val = val
 
-    def __single_effect(self, tag, val, player)#実際に起きるエフェクト
+    def __single_effect(self, tag, val, player):#実際に起きるエフェクト
         if tag == "gold":
             player.resource.add_gold(self.val)
         if tag == "vp":
@@ -57,7 +57,7 @@ class Face:
         if tag == "sun":
             player.resource.add_sun(self.val)
         if tag == "moon":
-            player.resource.add_moon.(self.val)
+            player.resource.add_moon(self.val)
 
     def effect(self, player):
         if self.tag in ["gold", "vp", "sun", "moon"]:
@@ -87,5 +87,4 @@ class Face:
             of.effect(player)
 
     def __get_other_face(self):
-        #他のフェイスを取得して返す
-
+        1==1#他のフェイスを取得して返す(何も書かないとエラーはいた)
