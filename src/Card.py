@@ -10,7 +10,7 @@ __status__ = "production"
 __date__ = "17 May 2020"
 
 class Card:
-    
+
     def __init__(self, name="", logical_name="", cost_sun=0, cost_moon=0, victory_point=0, instant_effect=None, passive_effect=None, activation_effect=None):
         self.name = name
         self.logical_name = logical_name
