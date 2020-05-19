@@ -5,11 +5,26 @@
 definition of Resource
 """
 
-__author__ = "aseruneko"
-__status__ = "production"
+__author__ = "aseruneko, yuliicppy"
 __date__ = "17 May 2020"
 
 class Resource:
+
+    '''
+
+    __init__():
+
+        self.gold : 所持ゴールド
+        self.sun  : 所持太陽
+
+
+    add_gold(self, addition): 
+        
+        goldをadditionだけプラスするメソッド
+
+    
+
+    '''
 
     INITIAL_GOLD_MAX = 12
     INITIAL_SUN_MAX = 6
