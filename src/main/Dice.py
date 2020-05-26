@@ -31,7 +31,7 @@ class Dice:
         return self.faces[num]
 
     def replace(self, face, num):#与えられたfaceオブジェクトでnum番目の目を交換する
-        self.face[num] = face
+        self.faces[num] = faces
 
 class Face:
     def __init__(self, tag, val):#初期化、これでいいのか思案中

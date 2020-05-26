@@ -10,7 +10,7 @@ __status__ = "production"
 __date__ = "18 May 2020"
 
 # import Board
-import Player
+from . import Player
 
 class DiceForge:
 

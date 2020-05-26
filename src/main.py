@@ -11,7 +11,7 @@ __version__ = "0.0.1a"
 __status__ = "production"
 __date__ = "18 May 2020"
 
-import DiceForge
+from main import DiceForge
 
 exit_flag = False
 

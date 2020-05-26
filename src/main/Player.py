@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-import DiceComposition
-import Resource
+from . import Dice
+from . import Resource
 
 class Player:
 
     def __init__(self, tag):
         self.tag = tag
-        self.dices = [DiceComposition.Dice(), DiceComposition.Dice()]
+        self.dices = [Dice.Dice(), Dice.Dice()]
         self.resource = Resource.Resource()
 
     # ダイスロール
