@@ -2,17 +2,35 @@
 # -*- coding:utf-8 -*-
 
 """
-define dice
+define dice and face
 """
 
 
-__author__ = "willofhare aka yochi"
-__status__ = "production"
-__date__ = "17 May 2020"
+__author__ = "yochi"
+__date__ = "27 May 2020"
 
 import random
 
 class Dice:
+
+    """
+    __init__():
+        ダイスの目の初期化。
+        今は仮実装。
+        そもそもダイスは2パターンあるからね。
+
+    roll():
+        ダイスを振ってself.topにランダムなfaceを置く。
+        返り値自体もself.topになっている
+
+    choice(num):
+        num番目のfaceを返す。
+
+    replace(num, other):
+        num番目のfaceをotherと入れ替える。
+
+    """
+
     def __init__(self):#ダイスの目を初期化。仮実装
         self.faces = [
             Face("gold", 1),
@@ -24,21 +42,37 @@ class Dice:
         ]
         self.roll()
 
-    def roll(self):#ランダムに振って出目のfaceオブジェクトを返す
+    def roll(self):
         self.top = random.choice(self.faces)
     
-    def choice(self, num):#num番目の出目を返す
+    def choice(self, num):
         return self.faces[num]
 
-    def replace(self, face, num):#与えられたfaceオブジェクトでnum番目の目を交換する
+    def replace(self, face, num):
         self.faces[num] = faces
 
 class Face:
-    def __init__(self, tag, val):#初期化、これでいいのか思案中
+
+    """
+        __init__(tag,val):
+            Faceオブジェクトはtagとvalのペアとしている。
+            tagはどんな絵柄か、valはその数を基本として表す。
+            tagが?や+の場合はvalが[tag,val]の配列になる。
+            鏡や*3はどうすべき?
+
+        __single_effect(tag,val,player):
+        effect(player):
+        __get_other_face:
+            書いたはいいけどFaceオブジェクトがPlayerのresourceに干渉するのは無理がある。
+            特に、鏡は他人の出目を参照する必要があり全員の出目をfaceに送らなくちゃいけない。
+            多分そのうち別のオブジェクトに機能が移されるメソッド群です。
+    """
+
+    def __init__(self, tag, val):
         self.tag = tag
         self.val = val
 
-    def __single_effect(self, tag, val, player):#実際に起きるエフェクト
+    def __single_effect(self, tag, val, player):
         if tag == "gold":
             player.resource.add_gold(val)
         if tag == "vp":
@@ -76,4 +110,4 @@ class Face:
             of.effect(player)
 
     def __get_other_face(self):
-        1==1#他のフェイスを取得して返す(何も書かないとエラーはいた)
+        pass
