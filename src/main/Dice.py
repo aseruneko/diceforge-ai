@@ -9,7 +9,7 @@ __author__ = "yochi, aseruneko"
 __date__ = "28 May 2020"
 
 import random
-from main.Face import Face
+from Face import Face
 
 class Dice:
 
@@ -49,7 +49,7 @@ class Dice:
         return self.faces[num]
 
     def replace(self, face, num):
-        self.faces[num] = faces
+        self.faces[num] = face
 
     def __str__(self):
         output = ""
