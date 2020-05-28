@@ -8,6 +8,8 @@ define dice
 __author__ = "yochi, aseruneko"
 __date__ = "28 May 2020"
 
+import random
+
 class Face:
 
     """
@@ -65,6 +67,11 @@ class Face:
         if self.tag == "mirror":
             of = self.__get_other_face()
             of.effect(player)
+
+    def __str__(self):
+        output = ""
+        output += self.tag + " " + str(self.val)
+        return output
 
     def __get_other_face(self):
         pass

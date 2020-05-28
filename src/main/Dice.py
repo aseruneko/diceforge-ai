@@ -50,3 +50,9 @@ class Dice:
 
     def replace(self, face, num):
         self.faces[num] = faces
+
+    def __str__(self):
+        output = ""
+        for i in range(6):
+            output += str(self.faces[i]) + ", "
+        return output

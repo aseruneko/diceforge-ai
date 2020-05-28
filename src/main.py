@@ -13,7 +13,6 @@ __date__ = "18 May 2020"
 
 from main import DiceForge
 
-
 exit_flag = False
 
 def main():

@@ -87,6 +87,9 @@ class DiceForge(IOInterface):
                     break
                 elif command == "player id":
                     self.write("your player id is " + str(player.tag))
+                elif command == "player dice":
+                    self.write(str(player.dices[0]))
+                    self.write(str(player.dices[1]))
                 elif command == "help":
                     self.print_help()
                 else:
@@ -99,6 +102,7 @@ class DiceForge(IOInterface):
         output += "face\t\t-\tbuy face\n"
         output += "card\t\t-\tbuy card\n"
         output += "player id\t-\tshow player id"
+        output += "player dice\t-\tshow player dice"
         self.write(output)
 
 
