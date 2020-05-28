@@ -7,12 +7,15 @@ Class of DiceForge (main part of game)
 
 __author__ = "c3341, aseruneko"
 __status__ = "production"
-__date__ = "18 May 2020"
+__date__ = "28 May 2020"
 
 # import Board
 from . import Player
+from main.Human import Human
+from main.Computer import Computer
+from main.IOInterface import IOInterface
 
-class DiceForge:
+class DiceForge(IOInterface):
 
     def __init__(self, player_distribution=["human","computer"], face_distribution=[0], card_distribution=[0]):
         self.player_num = len(player_distribution)
@@ -23,12 +26,12 @@ class DiceForge:
         self.player_list = []
         for i in range(self.player_num):
             if player_distribution[i] == "human":
-                self.player_list.append(Player.Player(0))
+                self.player_list.append(Human(i))
             if player_distribution[i] == "computer":
-                self.player_list.append(Player.Player(1))
+                self.player_list.append(Computer(i))
 
     def show_result(self):
-        print("> show result...")
+        self.write("> show result...")
 
     def print_all_variables(self):
         output = ""
@@ -36,13 +39,13 @@ class DiceForge:
         output += "Round: " + str(self.round) + "\n"
         output += "Face Distribution: " + str(self.face_distribution) + "\n"
         output += "Card Distribution: " + str(self.card_distribution) + "\n"
-        print(output)
+        self.write(output)
 
     def game(self):
         while(self.round < 2):
-            print(self.round, "round")
+            self.write("round" + str(self.round))
             for active_player in self.player_list:
-                print(active_player.tag, "'s turn")
+                self.write(str(active_player.tag) + "'s turn")
 
                 #全員がダイスを振るって神の祝福を受け取る
                 for player in self.player_list:
@@ -54,23 +57,53 @@ class DiceForge:
                 active_player.card_action()
 
                 #faceの購入かカードの購入を選ぶ
-                while(True):
-                    if active_player.tag == 0:
-                        print("face or card?")
-                        command = input()
-                        if command == "face":
-                            active_player.buy("face")
-                            break
-                        if command == "card":
-                            active_player.buy("card")
-                            break
-                    else:
-                        break
+                self.choose_first_action(active_player)
 
                 #追加アクションを行うか選ぶ
                 1==1
             self.round += 1
-        print("game set")
+        self.write("game set")
+
+    def read(self):
+        return input("\n> command?\n")
+
+    def write(self, string):
+        print("")
+        print(string)
+
+    def write_wrong_message(self):
+        self.write("> wrong command.")
+
+    def choose_first_action(self, player):
+        while(True):
+            if type(player) == Human:
+                self.write("face or card?")
+                command = self.read()
+                if command == "face":
+                    player.buy("face")
+                    break
+                elif command == "card":
+                    player.buy("card")
+                    break
+                elif command == "player id":
+                    self.write("your player id is " + str(player.tag))
+                elif command == "player dice":
+                    self.write(str(player.dices[0]))
+                    self.write(str(player.dices[1]))
+                elif command == "help":
+                    self.print_help()
+                else:
+                    self.write_wrong_message()
+            else:
+                break
+
+    def print_help(self):
+        output = "\n"
+        output += "face\t\t-\tbuy face\n"
+        output += "card\t\t-\tbuy card\n"
+        output += "player id\t-\tshow player id"
+        output += "player dice\t-\tshow player dice"
+        self.write(output)
 
 
 # test code

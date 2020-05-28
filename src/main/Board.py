@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
-import Card
-from Cards import *
-from Faces import *
-__author__ = "SYHNE"
-__status__ = "production"
-__date__ = "19 May 2020"
 
+from data.CardSet import *
+from data.FaceSet import *
+
+__author__ = "SYHNE"
+__date__ = "19 May 2020"
 
 remain_faces = []
 remain_cards = []

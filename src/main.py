@@ -43,9 +43,9 @@ def command_perse(command):
 
 def print_help():
     output = "\n"
-    output += "help\t-\tshow help\n"
-    output += "exit\t-\texit program\n"
-    output += "start\t-\tstart game"
+    output += "help\t\t-\tshow help\n"
+    output += "exit\t\t-\texit program\n"
+    output += "start\t\t-\tstart game"
     print(output)
 
 if __name__ == '__main__':

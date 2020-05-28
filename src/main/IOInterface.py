@@ -6,8 +6,10 @@
 readとwriteを実装すること
 """
 
-__author__ = "yochi"
-__date__ = "19 May 2020"
+__author__ = "yochi, aseruneko"
+__date__ = "28 May 2020"
+
+from abc import ABCMeta, abstractmethod
 
 class IOInterface:
 
