@@ -7,10 +7,12 @@ Class of DiceForge (main part of game)
 
 __author__ = "c3341, aseruneko"
 __status__ = "production"
-__date__ = "18 May 2020"
+__date__ = "28 May 2020"
 
 # import Board
 from . import Player
+from main.User import User
+from main.Computer import Computer
 
 class DiceForge:
 
@@ -23,9 +25,9 @@ class DiceForge:
         self.player_list = []
         for i in range(self.player_num):
             if player_distribution[i] == "human":
-                self.player_list.append(Player.Player(0))
+                self.player_list.append(User(i))
             if player_distribution[i] == "computer":
-                self.player_list.append(Player.Player(1))
+                self.player_list.append(Computer(i))
 
     def show_result(self):
         print("> show result...")
