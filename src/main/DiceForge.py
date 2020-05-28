@@ -11,7 +11,7 @@ __date__ = "28 May 2020"
 
 # import Board
 from . import Player
-from main.User import User
+from main.Human import Human
 from main.Computer import Computer
 
 class DiceForge:
@@ -25,7 +25,7 @@ class DiceForge:
         self.player_list = []
         for i in range(self.player_num):
             if player_distribution[i] == "human":
-                self.player_list.append(User(i))
+                self.player_list.append(Human(i))
             if player_distribution[i] == "computer":
                 self.player_list.append(Computer(i))
 
