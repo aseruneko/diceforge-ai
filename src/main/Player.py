@@ -33,23 +33,26 @@ class Player:
 
         resource
             プレイヤーが持つResource
+
     [インスタンスメソッド]
-        diceroll
+        diceroll():
             dices.topをランダムに変更する。
             つまり自身のダイスを振る。
 
-        receive_divine_blessing
+        receive_divine_blessing():
             大規模変更予定。
             自身のダイスの出目の神の祝福を受け取る。
             これは他のクラスに機能が移されるでしょう。
 
-        card_action
-        buy
+        card_action():
+        buy(which):
             未実装。
             体裁のために存在してますが、使用されているので一先ず消さないでください。
             このメソッドにおいてプレイヤーは、
             どのカードの効果を行うか、あるいは何を買うかの選択を行うに留め、
             実際の処理は別のクラスが行うようにするといいのではないかと思う。
+            buyのwhichはカードかフェイスかどちらを買うかのフラグを受け取っているが、
+            特に何もしていない。
     """
 
     def __init__(self, id):
