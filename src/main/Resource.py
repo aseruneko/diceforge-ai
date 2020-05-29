@@ -2,29 +2,66 @@
 # -*- coding:utf-8 -*-
 
 """
-definition of Resource
+ダイスフォージで使用するリソースのクラス
+"""
+
+"""
+- gold, sun, moon, vpを管理している
+- 各リソースの上限も管理している
+- 最終的な効果の解決はこのクラスのメソッドに着地することが多いはず
+- おそらく最も早く「完成」されたクラス
 """
 
 __author__ = "aseruneko, yuliicppy"
-__date__ = "17 May 2020"
+__date__ = "29 May 2020"
 
 class Resource:
 
-    '''
+    """
+    [クラス変数]
 
-    __init__():
+        INITIAL_GOLD_MAX
+        INITIAL_SUN_MAX
+        INITIAL_MOON_MAX
+            各リソースの初期の上限値の定義
+            ここに書くべきではないかもしれない...？
 
-        self.gold : $B=j;}%4!<%k%I(B
-        self.sun  : $B=j;}B@M[(B
+    [インスタンス変数]
 
+        gold
+        sun
+        moon
+        victory_point
+            各リソースの値
 
-    add_gold(self, addition): 
+        gold_max
+        sun_max
+        moon_max
+            各リソースの上限の値
+
+    [インスタンスメソッド]
         
-        gold$B$r(Baddition$B$@$1%W%i%9$9$k%a%=%C%I(B
+        __init__():
+            各リソースの初期上限値に基づいて、リソースを保管、操作できるようにする
 
-    
+        add_gold(addition):
+        add_sun(addition):
+        add_moon(addition):
+        add_victory_point(addition):
+            各リソースをaddition分、上限値を加味して増加させる
 
-    '''
+        substruct_gold(substruction):
+        substruct_sun(substruction):
+        substruct_moon(substruction):
+        substruct_victory_point(substruction):
+            各リソースをsubstruction分、最低0まで低減させる
+
+        expand_gold_max(expansion):
+        expand_sun_max(expansion):
+        expand_moon_max(expansion):
+            クラスで扱うリソースの上限値をexpansion分、上昇させる
+
+    """
 
     INITIAL_GOLD_MAX = 12
     INITIAL_SUN_MAX = 6
