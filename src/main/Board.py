@@ -1,18 +1,51 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 
-from data.CardSet import *
-from data.FaceSet import *
+"""
+ゲームで使用するボードのクラス
+"""
+
+"""
+- 現状呼び出されていない（そのためエラー有り）が、DiceForge.pyで呼び出し予定
+- ゲームでボードに並べられている鍛造可能なフェイスの一覧と残数を持つのはここ
+- ゲームでボードに並べられている購入可能なカードの一覧と残数を持つのもここ
+- ゲームで購入ボードのどこにプレイヤーコマがいるかの情報を持つのもここ
+"""
 
 __author__ = "SYHNE, aseruneko"
 __date__ = "28 May 2020"
 
+from data.CardSet import *
+from data.FaceSet import *
+
 class Board:
+
+    """
+    [インスタンス変数]
+
+        remain_faces
+            ゲームボードの上に残っている鍛造可能なフェイスの一覧。
+            Faceのリストになるだろうが、未実装
+
+        remain_cards
+            ゲームボードの上に残っている購入可能なカードの一覧。
+            Cardのリストになるだろうが、未実装
+
+    [インスタンスメソッド]
+
+        __init__(face_distribution, card_distribution):
+            face_distribution   -   ゲームボードに並べられるフェイスのidの列
+            card_distribution   -   ゲームボードに並べられるカードのidの列
+
+        reset():
+            未実装
+
+    """
+
     def __init__(self, face_distribution = None, card_distribution = None):
         #Distributionで管理 or Boardのremainで管理(playerが各々保持)?
         self.remain_faces = face_distribution
         self.remain_cards = card_distribution
-        self.used_CardType = Used_CardType
 
     def reset(self):
         self.remain_cards = [2] * 15 #後でプレイヤー数に　
