@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 
+"""
+使用するカードのデータ（json処理に完全移植完了後、削除予定）
+"""
+
 __author__ = "SYHNE"
-__status__ = "production"
 __date__ = "19 May 2020"
+
 #[name,cost_sun,cost_moon_victory_point]
 gametype = 0
 if gametype == 0:
