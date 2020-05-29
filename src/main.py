@@ -105,7 +105,7 @@ def print_title():
 def print_help():
     output = "\n"
     output += "help\t\t-\tshow help\n"
-    output += "start\t\t-\tstart game"
+    output += "start\t\t-\tstart game\n"
     output += "exit\t\t-\texit program\n"
     print(output)
 
