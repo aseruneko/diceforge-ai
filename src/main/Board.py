@@ -4,21 +4,16 @@
 from data.CardSet import *
 from data.FaceSet import *
 
-__author__ = "SYHNE"
-__date__ = "19 May 2020"
+__author__ = "SYHNE, aseruneko"
+__date__ = "28 May 2020"
 
-remain_faces = []
-remain_cards = []
 class Board:
-    def __init__(self,Used_CardType , remain_cards = None, remain_faces = None, Manual=None  ):
+    def __init__(self, face_distribution = None, card_distribution = None):
         #Distributionで管理 or Boardのremainで管理(playerが各々保持)?
-        self.remain_cards = remain_cards
-        self.remain_faces = remain_faces
+        self.remain_faces = face_distribution
+        self.remain_cards = card_distribution
         self.used_CardType = Used_CardType
-        if Manual is None:
-            self.reset()
-        #else:
-        #    self.set_Manual(Manual)
+
     def reset(self):
         self.remain_cards = [2] * 15 #後でプレイヤー数に　
         self.remain_faces = Face_amount_ForTwoPlayer #Facesから

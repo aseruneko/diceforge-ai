@@ -17,11 +17,11 @@ from main.IOInterface import IOInterface
 
 class DiceForge(IOInterface):
 
-    def __init__(self, player_distribution=["human","computer"], face_distribution=[0], card_distribution=[0]):
+    def __init__(self, player_distribution=["human","computer"], face_distribution_type="default", card_distribution_type="default"):
         self.player_num = len(player_distribution)
         self.round = 0
-        self.face_distribution = face_distribution
-        self.card_distribution = card_distribution
+        self.face_distribution = self.make_face_distribution(face_distribution_type)
+        self.card_distribution = [0]
         # self.board = Board(face_distribution, card_distribution)
         self.player_list = []
         for i in range(self.player_num):
@@ -104,6 +104,20 @@ class DiceForge(IOInterface):
         output += "player id\t-\tshow player id"
         output += "player dice\t-\tshow player dice"
         self.write(output)
+
+    def make_face_distribution(self, face_distribution_type):
+        output = [0]
+        if face_distribution_type == "default":
+            if self.player_num == 2:
+                pass
+            if self.player_num == 3:
+                pass
+            if self.player_num == 4:
+                pass
+        if face_distribution_type == "debug":
+            output = [0,0,0,0,0,0,0,0]
+        return output
+
 
 
 # test code
