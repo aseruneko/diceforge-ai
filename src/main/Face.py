@@ -69,7 +69,7 @@ class Face:
 
         if self.tag == "+":
             for item in self.val:
-                self.__single_effect(item[0], item[1], player)
+                self.__single_effect(item["tag"], item["val"], player)
 
         if self.tag == "?":
             item = random.choice(self.val)#仮実装

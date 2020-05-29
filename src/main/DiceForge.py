@@ -125,8 +125,8 @@ class DiceForge(IOInterface):
             pass
         elif initial_dice_face_type == "debug":
             for player in player_list:
-                player.dices.append(Dice([1,1,1,1,1,1]))
-                player.dices.append(Dice([1,1,1,1,1,1]))
+                player.dices.append(Dice([0,0,0,0,0,0]))
+                player.dices.append(Dice([0,0,0,0,0,0]))
 
 
 
