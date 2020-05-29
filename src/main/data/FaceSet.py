@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 
+"""
+使用するフェイスのデータ（json処理に完全移植完了後、削除予定）
+"""
+
 import Dice
 import random
+
 __author__ = "SYHNE"
-__status__ = "production"
 __date__ = "19 May 2020"
 
 Face_list = [Dice.Face("gold", 1),Dice.Face("vp", 2),

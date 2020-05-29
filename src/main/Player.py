@@ -1,13 +1,32 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
+
+"""
+ゲームのプレイヤー（NPCも含む）のクラス
+"""
+
+"""
+- HumanクラスとComputerクラスに継承されている
+- 人間もNPCも共通して行うだろう処理、プレイヤーとしてのとれるアクションはここに記載される
+"""
+
+__author__ = "yochi"
+__date__ = "29 May 2020"
+
 from . import Dice
 from . import Resource
 
 class Player:
 
+    """
+        ************************
+        ***yochiによる記載待ち***
+        ************************
+    """
+
     def __init__(self, tag):
         self.tag = tag
-        self.dices = [Dice.Dice(), Dice.Dice()]
+        self.dices = []
         self.resource = Resource.Resource()
 
     # ダイスロール

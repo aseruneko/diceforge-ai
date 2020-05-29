@@ -1,0 +1,233 @@
+{
+    "card_list" : [
+        {
+            "id" : 0,
+            "name" : "DEBUG",
+            "tag" : "+",
+            "val" : [
+                {
+                    "tag" : "gold",
+                    "val" : 99
+                },
+                {
+                    "tag" : "sun",
+                    "val" : 99
+                },
+                {
+                    "tag" : "moon",
+                    "val" : 99
+                },
+                {
+                    "tag" : "vp",
+                    "val" : 99
+                }
+            ],
+            "cost" : 0
+        },
+        {
+            "id" : 1,
+            "name" : "GOLD_1",
+            "tag" : "gold",
+            "val" : 1,
+            "cost" : 0
+        },
+        {
+            "id" : 2,
+            "name" : "VP_2",
+            "tag" : "vp",
+            "val" : 2,
+            "cost" : 0
+        },
+        {
+            "id" : 3,
+            "name" : "MOON_1",
+            "tag" : "moon",
+            "val" : 1,
+            "cost" : 2
+        },
+        {
+            "id" : 4,
+            "name" : "GOLD_3",
+            "tag" : "gold",
+            "val" : 3,
+            "cost" : 2
+        },
+        {
+            "id" : 5,
+            "name" : "SUN_1",
+            "tag" : "sun",
+            "val" : 1,
+            "cost" : 3
+        },
+        {
+            "id" : 6,
+            "name" : "GOLD_4",
+            "tag" : "gold",
+            "val" : 4,
+            "cost" : 3
+        },
+        {
+            "id" : 7,
+            "name" : "GOLD_6",
+            "tag" : "gold",
+            "val" : 6,
+            "cost" : 4
+        },
+        {
+            "id" : 8,
+            "name" : "+_SUN_1_VP_1",
+            "tag" : "+",
+            "val" : [
+                {
+                    "tag" : "sun",
+                    "val" : 1
+                },
+                {
+                    "tag" : "vp",
+                    "val" : 1
+                }
+            ],
+            "cost" : 4
+        },
+        {
+            "id" : 9,
+            "name" : "+_GOLD_2_MOON_1",
+            "tag" : "+",
+            "val" : [
+                {
+                    "tag" : "gold",
+                    "val" : 2
+                },
+                {
+                    "tag" : "moon",
+                    "val" : 1
+                }
+            ],
+            "cost" : 4
+        },
+        {
+            "id" : 10,
+            "name" : "?_SUN_1_MOON_1_GOLD_1",
+            "tag" : "?",
+            "val" : [
+                {
+                    "tag" : "sun",
+                    "val" : 1
+                },
+                {
+                    "tag" : "moon",
+                    "val" : 1
+                },
+                {
+                    "tag" : "gold",
+                    "val" : 1
+                }
+            ],
+            "cost" : 4
+        },
+        {
+            "id" : 11,
+            "name" : "?_GOLD_2_VP_2",
+            "tag" : "?",
+            "val" : [
+                {
+                    "tag" : "gold",
+                    "val" : 2
+                },
+                {
+                    "tag" : "vp",
+                    "val" : 2
+                }
+            ],
+            "cost" : 5
+        },
+        {
+            "id" : 12,
+            "name" : "MOON_2",
+            "tag" : "moon",
+            "val" : 2,
+            "cost" : 6
+        },
+        {
+            "id" : 13,
+            "name" : "SUN_2",
+            "tag" : "sun",
+            "val" : 2,
+            "cost" : 8
+        },
+        {
+            "id" : 14,
+            "name" : "VP_3",
+            "tag" : "vp",
+            "val" : 3,
+            "cost" : 8
+        },
+        {
+            "id" : 15,
+            "name" : "VP_4",
+            "tag" : "vp",
+            "val" : 4,
+            "cost" : 12
+        },
+        {
+            "id" : 16,
+            "name" : "+_VP_2_MOON_2",
+            "tag" : "+",
+            "val" : [
+                {
+                    "tag" : "vp",
+                    "val" : 2
+                },
+                {
+                    "tag" : "moon",
+                    "val" : 2
+                }
+            ],
+            "cost" : 12
+        },
+        {
+            "id" : 17,
+            "name" : "+_SUN_1_MOON_1_GOLD_1_VP_1",
+            "tag" : "+",
+            "val" : [
+                {
+                    "tag" : "sun",
+                    "val" : 1
+                },
+                {
+                    "tag" : "moon",
+                    "val" : 1
+                },
+                {
+                    "tag" : "gold",
+                    "val" : 1
+                },
+                {
+                    "tag" : "vp",
+                    "val" : 1
+                }
+            ],
+            "cost" : 12
+        },
+        {
+            "id" : 18,
+            "name" : "?_SUN_2_MOON_2_GOLD_2",
+            "tag" : "?",
+            "val" : [
+                {
+                    "tag" : "sun",
+                    "val" : 2
+                },
+                {
+                    "tag" : "moon",
+                    "val" : 2
+                },
+                {
+                    "tag" : "gold",
+                    "val" : 2
+                }
+            ],
+            "cost" : 12
+        }
+    ]
+}

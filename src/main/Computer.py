@@ -2,7 +2,13 @@
 # -*- coding:utf-8 -*-
 
 """
-Class of User
+プレイヤーのうち、NPCのクラス
+"""
+
+"""
+- Playerクラスを継承している
+- 全体的に未実装
+- 将来的にはここでAIを読み込ませる？
 """
 
 __author__ = "aseruneko"
