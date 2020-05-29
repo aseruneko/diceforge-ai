@@ -2,11 +2,16 @@
 # -*- coding:utf-8 -*-
 
 """
-define dice
+ゲームで使用するダイスのクラス
+"""
+
+"""
+- Faceクラスを6つ所持する
+- 基本的にはダイスを転がして、上になった面を参照する機能
 """
 
 __author__ = "yochi, aseruneko"
-__date__ = "28 May 2020"
+__date__ = "29 May 2020"
 
 import random
 from main.Face import Face
@@ -14,24 +19,32 @@ from main.Face import Face
 class Dice:
 
     """
-    __init__():
-        ダイスの目の初期化。
-        今は仮実装。
-        そもそもダイスは2パターンあるからね。
+    [インスタンス変数]
 
-    roll():
-        ダイスを振ってself.topにランダムなfaceを置く。
-        返り値自体もself.topになっている
+        faces
+            ダイスの持つ6つのFaceの配列
 
-    choice(num):
-        num番目のfaceを返す。
+        top
+            ダイスが現在向いている上の面のFace
 
-    replace(num, other):
-        num番目のfaceをotherと入れ替える。
+    [インスタンスメソッド]
+
+        __init__(face_id_list):
+            face_id_list    -  作成するダイスの持つFaceのidの配列
+
+        roll():
+            ダイスを振ってself.topにランダムなfaceを置く。
+            返り値自体もself.topになっている
+
+        choice(num):
+            num番目のfaceを返す。
+
+        replace(num, other):
+            num番目のfaceをotherと入れ替える。
 
     """
 
-    def __init__(self, face_id_list):#ダイスの目を初期化。仮実装
+    def __init__(self, face_id_list):
         self.faces = []
         for face_id in face_id_list:
             self.faces.append(Face(face_id))
