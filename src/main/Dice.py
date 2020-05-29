@@ -9,7 +9,7 @@ __author__ = "yochi, aseruneko"
 __date__ = "28 May 2020"
 
 import random
-from Face import Face
+from main.Face import Face
 
 class Dice:
 
@@ -33,12 +33,12 @@ class Dice:
 
     def __init__(self):#ダイスの目を初期化。仮実装
         self.faces = [
-            Face("gold", 1),
-            Face("vp", 1),
-            Face("sun", 1),
-            Face("moon", 1),
-            Face("+", [["sun", 1],["moon",1]]),
-            Face("?", [["gold", 1],["vp",1]])
+            Face("gold", 1, 0),
+            Face("vp", 1, 0),
+            Face("sun", 1, 0),
+            Face("moon", 1, 0),
+            Face("+", [["sun", 1],["moon",1]], 0),
+            Face("?", [["gold", 1],["vp",1]], 0)
         ]
         self.roll()
 

@@ -27,9 +27,10 @@ class Face:
             多分そのうち別のオブジェクトに機能が移されるメソッド群です。
     """
 
-    def __init__(self, tag, val):
+    def __init__(self, tag, val, cost):
         self.tag = tag
         self.val = val
+        self.cost = cost
 
     def __single_effect(self, tag, val, player):
         if tag == "gold":
