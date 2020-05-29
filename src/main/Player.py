@@ -7,7 +7,7 @@ class Player:
 
     def __init__(self, tag):
         self.tag = tag
-        self.dices = [Dice.Dice(), Dice.Dice()]
+        self.dices = []
         self.resource = Resource.Resource()
 
     # ダイスロール

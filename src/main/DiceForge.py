@@ -14,10 +14,11 @@ from . import Player
 from main.Human import Human
 from main.Computer import Computer
 from main.IOInterface import IOInterface
+from main.Dice import Dice
 
 class DiceForge(IOInterface):
 
-    def __init__(self, player_distribution=["human","computer"], face_distribution_type="default", card_distribution_type="default"):
+    def __init__(self, player_distribution=["human","computer"], face_distribution_type="default", card_distribution_type="default", initial_dice_face_type="default"):
         self.player_num = len(player_distribution)
         self.round = 0
         self.face_distribution = self.make_face_distribution(face_distribution_type)
@@ -29,6 +30,7 @@ class DiceForge(IOInterface):
                 self.player_list.append(Human(i))
             if player_distribution[i] == "computer":
                 self.player_list.append(Computer(i))
+        self.make_initial_face_dice(self.player_list, initial_dice_face_type)
 
     def show_result(self):
         self.write("> show result...")
@@ -117,6 +119,14 @@ class DiceForge(IOInterface):
         if face_distribution_type == "debug":
             output = [0,0,0,0,0,0,0,0]
         return output
+
+    def make_initial_face_dice(self, player_list, initial_dice_face_type):
+        if initial_dice_face_type == "default":
+            pass
+        elif initial_dice_face_type == "debug":
+            for player in player_list:
+                player.dices.append(Dice([1,1,1,1,1,1]))
+                player.dices.append(Dice([1,1,1,1,1,1]))
 
 
 

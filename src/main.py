@@ -16,6 +16,7 @@ from main import DiceForge
 player_distribution = ["human","computer"]
 face_distribution_type = "debug"
 card_distribution_type = "default"
+initial_dice_face_type = "debug"
 
 exit_flag = False
 
@@ -42,7 +43,7 @@ def command_perse(command):
         print_help()
     if command == "start":
         print("> game starts...")
-        dice_forge = DiceForge.DiceForge(player_distribution, face_distribution_type, card_distribution_type)
+        dice_forge = DiceForge.DiceForge(player_distribution, face_distribution_type, card_distribution_type, initial_dice_face_type)
         dice_forge.game()
 
 def print_help():

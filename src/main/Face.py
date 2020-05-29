@@ -9,6 +9,8 @@ __author__ = "yochi, aseruneko"
 __date__ = "28 May 2020"
 
 import random
+import os
+import json
 
 class Face:
 
@@ -27,10 +29,29 @@ class Face:
             多分そのうち別のオブジェクトに機能が移されるメソッド群です。
     """
 
-    def __init__(self, tag, val, cost):
-        self.tag = tag
-        self.val = val
-        self.cost = cost
+    name_list = []
+    tag_list = []
+    val_list = []
+    cost_list = []
+
+    @classmethod
+    def load_face_data(cls):
+        path = os.path.join(os.path.dirname(__file__), 'data/FaceData.json')
+        with open(path) as f:
+            j = json.load(f)
+        for face in j["card_list"]:
+            cls.name_list.append(face["name"])
+            cls.tag_list.append(face["tag"])
+            cls.val_list.append(face["val"])
+            cls.cost_list.append(face["cost"])
+
+    def __init__(self, id):
+        if len(Face.name_list) == 0:
+            Face.load_face_data()
+        self.name = Face.name_list[id]
+        self.tag = Face.tag_list[id]
+        self.val = Face.val_list[id]
+        self.cost = Face.cost_list[id]
 
     def __single_effect(self, tag, val, player):
         if tag == "gold":
