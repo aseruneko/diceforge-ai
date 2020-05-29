@@ -103,13 +103,11 @@ class DiceForge(IOInterface):
         while(self.round < 2):
             self.write("round" + str(self.round))
             for active_player in self.player_list:
-                self.write(str(active_player.tag) + "'s turn")
+                self.write(str(active_player.id) + "'s turn")
 
                 #全員がダイスを振るって神の祝福を受け取る
                 for player in self.player_list:
-                    player.diceroll()
-                    player.give()
-                    player.print_resource()
+                    player.receive_divine_blessings()
 
                 #手番プレイヤーはカードの効果を解決する
                 active_player.card_action()
@@ -118,7 +116,7 @@ class DiceForge(IOInterface):
                 self.choose_first_action(active_player)
 
                 #追加アクションを行うか選ぶ
-                1==1
+                pass
             self.round += 1
         self.write("game set")
 
@@ -144,7 +142,7 @@ class DiceForge(IOInterface):
                     player.buy("card")
                     break
                 elif command == "player id":
-                    self.write("your player id is " + str(player.tag))
+                    self.write("your player id is " + str(player.id))
                 elif command == "player dice":
                     self.write(str(player.dices[0]))
                     self.write(str(player.dices[1]))

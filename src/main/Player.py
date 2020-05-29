@@ -19,37 +19,57 @@ from . import Resource
 class Player:
 
     """
-        ************************
-        ***yochiによる記載待ち***
-        ************************
+    [インスタンス変数]
+
+        id
+            人間あるいはコンピュータのid。
+            現状は整数値。
+            人間とコンピュータで重複する。
+
+        dices
+            プレイヤーが持つDiceの配列
+            長さが2になるように運用してください。
+            長さを固定する方法をご存じの方は書き直してね。
+
+        resource
+            プレイヤーが持つResource
+
+    [インスタンスメソッド]
+        diceroll():
+            dices.topをランダムに変更する。
+            つまり自身のダイスを振る。
+
+        receive_divine_blessing():
+            大規模変更予定。
+            自身のダイスの出目の神の祝福を受け取る。
+            これは他のクラスに機能が移されるでしょう。
+
+        card_action():
+        buy(which):
+            未実装。
+            体裁のために存在してますが、使用されているので一先ず消さないでください。
+            このメソッドにおいてプレイヤーは、
+            どのカードの効果を行うか、あるいは何を買うかの選択を行うに留め、
+            実際の処理は別のクラスが行うようにするといいのではないかと思う。
+            buyのwhichはカードかフェイスかどちらを買うかのフラグを受け取っているが、
+            特に何もしていない。
     """
 
-    def __init__(self, tag):
-        self.tag = tag
+    def __init__(self, id):
+        self.id = id
         self.dices = []
         self.resource = Resource.Resource()
 
-    # ダイスロール
     def diceroll(self):
         for dice in self.dices:
             dice.roll
 
-    #神の祝福をもらう(faceからリソースを貰う)
-    def give(self):
+    def receive_divine_blessings(self):
         for dice in self.dices:
             dice.top.effect(self)
 
-    # カードの常在型アクション
     def card_action(self):
-        1==1
+        pass
     
-    # 購入アクション
     def buy(self, which):
-        1==1
-
-    def print_resource(self):
-        print(self.tag, "'s resource")
-        print("gold: ", self.resource.gold)
-        print("sun:  ", self.resource.sun)
-        print("moon: ", self.resource.moon)
-        print("vp:   ", self.resource.victory_point)
+        pass
