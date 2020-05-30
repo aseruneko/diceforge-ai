@@ -71,7 +71,7 @@ from main import DiceForge
 """
 
 player_distribution = ["human","computer"]
-face_distribution_type = "debug"
+face_distribution_type = "default"
 card_distribution_type = "default"
 initial_dice_face_type = "debug"
 

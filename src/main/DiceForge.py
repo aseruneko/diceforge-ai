@@ -21,6 +21,7 @@ from main.Computer import Computer
 from main.IOInterface import IOInterface
 from main.Dice import Dice
 from main import resolve
+import random
 
 class DiceForge(IOInterface):
 
@@ -171,13 +172,18 @@ class DiceForge(IOInterface):
         output = [0]
         if face_distribution_type == "default":
             if self.player_num == 2:
-                pass
-            if self.player_num == 3:
-                pass
-            if self.player_num == 4:
-                pass
+                output = [4,4,3,3,6,6,5,5,-1,-1,11,11,12,12,13,13,14,14,-1,-1]
+                x = random.sample([7,8,9,10],2)
+                output[8],output[9] = x[0],x[1]
+                y = random.sample([15,16,17,18],2)
+                output[18],output[19] = y[0],y[1]
+            elif self.player_num == 3 and self.player_num == 4:
+                output = [4,4,4,4,3,3,3,3,6,6,6,6,5,5,5,5,7,8,9,10,11,11,11,11,12,12,12,12,13,13,13,13,14,14,14,14,15,16,17,18]
         if face_distribution_type == "debug":
-            output = [0,1,2,3,4,5,6,7]
+            if self.player_num == 2:
+                output = list(range(20))
+            elif self.player_num == 3 and self.player_num == 4:
+                output = list(range(30) + range(10))
         return output
 
     def make_initial_face_dice(self, player_list, initial_dice_face_type):
