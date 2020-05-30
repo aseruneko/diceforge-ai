@@ -7,17 +7,30 @@
 
 """
 - カードに関しては全体的に未実装な物が多い
-- ダイス（Dice.py）に関しての実装が終わったあとにそれを参考に実装していきたい
+- ダイス（Dice.py）に関しての実装が終わったあとにそれを参考に実装していきたい（ほぼ終了）
 """
 
 __author__ = "aseruneko"
-__date__ = "29 May 2020"
+__date__ = "30 May 2020"
 
 import os, json
 
 class Card:
 
     """
+    [クラス変数]
+
+        name_list
+        logical_name_list
+        cost_sun_list
+        cost_moon_list
+        victory_point_list
+        instant_effect_list
+        passive_effect_list
+        activation_effect_list
+        description_list
+            jsonから読み出された要素の配列です
+
     [インスタンス変数]
 
         name
@@ -42,14 +55,16 @@ class Card:
         activation_effect
             カードの持つ起動効果（後でEffectクラスを実装し、代入する）
             もしかすると、activate_effectかもしれない（※要検討）
+
+        description
+            カードの説明
         
     [インスタンスメソッド]
 
-        __init__(name, logical_name, cost_sun, cost_moon, victory_point, instant_effect, passive_effect, activation_effect):
-            現状、すべての内容が渡されて生成されることになっているが、
-            後々、jsonから呼び出して作れるようにするべき。よって、本来渡されるべきはidのみ
+        __init__(id):
+            CardData.jsonに格納されているidに応じたカードを生成します。
 
-        __print_all_variables():
+        print_all_variables():
             インスタンスの持つ全ての変数を表示するデバック用メソッド。
 
     """
