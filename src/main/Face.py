@@ -82,7 +82,7 @@ class Face:
             j = json.load(f)
         # 読んだjsonの内容をクラス変数に格納する
         # 通し番号であるidでアクセスするよう設計されている
-        for face in j["card_list"]:
+        for face in j["face_list"]:
             cls.name_list.append(face["name"])
             cls.tag_list.append(face["tag"])
             cls.val_list.append(face["val"])

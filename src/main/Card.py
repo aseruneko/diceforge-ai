@@ -73,6 +73,9 @@ class Card:
         output += "activation_effect: " + str(self.activation_effect) + "\n"
         print(output)
 
+    def __str__(self):
+        return self.logical_name
+
 # test code
 if __name__ == '__main__':
     card = Card()

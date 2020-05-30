@@ -2,7 +2,7 @@
 
 ## FaceData.json
 
-| card_list |        |      |               |      |
+| face_list |        |      |               |      |
 | --------- | ------ | ---- | ------------- | ---- |
 | id        | name   | tag  | val           | cost |
 | 0         | DEBUG  | +    |  *辞書のリスト | 0    |
