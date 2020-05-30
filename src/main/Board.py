@@ -15,10 +15,10 @@
 __author__ = "SYHNE, aseruneko"
 __date__ = "28 May 2020"
 
-from data.CardSet import *
-from data.FaceSet import *
-
-class Board:
+from main.Dice import Dice
+from main.Face import Face
+from main.IOInterface import IOInterface
+class Board(IOInterface):
 
     """
     [インスタンス変数]
@@ -42,18 +42,33 @@ class Board:
 
     """
 
-    def __init__(self, face_distribution = None, card_distribution = None):
-        #Distributionで管理 or Boardのremainで管理(playerが各々保持)?
-        self.remain_faces = face_distribution
-        self.remain_cards = card_distribution
+    def __init__(self, face_distribution ,card_distribution ):
+        self.face_distribution = face_distribution
+        self.card_distribution = card_distribution
 
-    def reset(self):
-        self.remain_cards = [2] * 15 #後でプレイヤー数に　
-        self.remain_faces = Face_amount_ForTwoPlayer #Facesから
+    
 
-    #def playable_dice_face()
+    def show_playable_dice_face(self):
+        output =""
+        for playable_dice_num, playable_face in enumerate(self.face_distribution):
+            output += str(playable_dice_num) + str(Face(playable_face)) +"\n"
+        self.write(output)   
+        
+    #def show_playable_cards(self):
+    #    output= []
+    #    for playable_card_num, playable_card in enumerate(self.card_distribution):
+    #        output += playable_card_num + str(Card[(playable_card)]) +"\n"
+    #   self.write(output)  
 
-    #def playable_cards()
+    def read(self):
+        return input("\n> command?\n")
+
+    def write(self, string):
+        print("")
+        print(string)
+        
+
+ 
 #test
 if __name__ == '__main__':
     board = Board(Card_Types)

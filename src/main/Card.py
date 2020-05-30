@@ -72,6 +72,7 @@ class Card:
         output += "passive_effect: " + str(self.passive_effect) + "\n"
         output += "activation_effect: " + str(self.activation_effect) + "\n"
         print(output)
+    # def str 
 
 # test code
 if __name__ == '__main__':

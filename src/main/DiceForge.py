@@ -14,7 +14,7 @@
 __author__ = "c3341, aseruneko"
 __date__ = "29 May 2020"
 
-# import Board
+from main.Board import Board
 from main.Human import Human
 from main.Player import Player
 from main.Computer import Computer
@@ -90,7 +90,7 @@ class DiceForge(IOInterface):
         self.round = 0
         self.face_distribution = self.make_face_distribution(face_distribution_type)
         self.card_distribution = [0] #仮実装
-        # self.board = Board(face_distribution, card_distribution)
+        self.board = Board(self.face_distribution, self.card_distribution)
         self.player_list = []
         for i in range(self.player_num): # distributionに基づくPlayerの作成
             if player_distribution[i] == "human":
@@ -108,12 +108,12 @@ class DiceForge(IOInterface):
 
                 #全員がダイスを振る
                 for player in self.player_list:
-                    resolve.resolve_effect(player, "roll_2_dices")
+                    resolve.resolve_effect(board = None, player = player, effect = "roll_2_dices")
                     # player.receive_divine_blessings()
 
                 #全員がダイスに書かれている効果を適用する
                 for player in self.player_list:
-                    resolve.resolve_effect(player, "resolve_2_dices")
+                    resolve.resolve_effect(board = None, player = player, effect = "resolve_2_dices")
 
                 #手番プレイヤーはカードの効果を解決する
                 active_player.card_action()
@@ -142,7 +142,7 @@ class DiceForge(IOInterface):
                 self.write("face or card?")
                 command = self.read()
                 if command == "face":
-                    player.buy("face")
+                    resolve.resolve_effect(board = self.board,player = player,effect = "buy_face")
                     break
                 elif command == "card":
                     player.buy("card")
@@ -177,7 +177,7 @@ class DiceForge(IOInterface):
             if self.player_num == 4:
                 pass
         if face_distribution_type == "debug":
-            output = [0,0,0,0,0,0,0,0]
+            output = [0,1,2,3,4,5,6,7]
         return output
 
     def make_initial_face_dice(self, player_list, initial_dice_face_type):
@@ -189,3 +189,4 @@ class DiceForge(IOInterface):
             for player in player_list:
                 player.dices.append(Dice([0,0,0,0,0,0]))
                 player.dices.append(Dice([0,0,0,0,0,0]))
+    
