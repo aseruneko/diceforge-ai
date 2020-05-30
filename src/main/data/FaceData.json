@@ -1,5 +1,5 @@
 {
-    "card_list" : [
+    "face_list" : [
         {
             "id" : 0,
             "name" : "DEBUG",
@@ -228,6 +228,95 @@
                 }
             ],
             "cost" : 12
+        },
+        {
+            "id" : 19,
+            "name" : "MULTIPLIER",
+            "tag" : "multiplier",
+            "val" : 0,
+            "cost" : 0
+        },
+        {
+            "id" : 20,
+            "name" : "COPY_EFFECT",
+            "tag" : "copy_effect",
+            "val" : 0,
+            "cost" : 0
+        },
+        {
+            "id" : 21,
+            "name" : "SANCTUARY",
+            "tag" : "sanctuary",
+            "val" : 2,
+            "cost" : 0
+        },
+        {
+            "id" : 22,
+            "name" : "GUARDIAN'S_SHIELD_MOON_2_VP_5",
+            "tag" : "guardian's_shield",
+            "val" : {
+                "tag" : "moon",
+                "val" : 2
+            },
+            "cost" : 0
+        },
+        {
+            "id" : 23,
+            "name" : "GUARDIAN'S_SHIELD_GOLD_3_VP_5",
+            "tag" : "guardian's_shield",
+            "val" : {
+                "tag" : "gold",
+                "val" : 3
+            },
+            "cost" : 0
+        },
+        {
+            "id" : 24,
+            "name" : "GUARDIAN'S_SHIELD_VP_3_VP_5",
+            "tag" : "guardian's_shield",
+            "val" : {
+                "tag" : "vp",
+                "val" : 3
+            },
+            "cost" : 0
+        },
+        {
+            "id" : 25,
+            "name" : "GUARDIAN'S_SHIELD_SUN_2_VP_5",
+            "tag" : "guardian's_shield",
+            "val" : {
+                "tag" : "sun",
+                "val" : 2
+            },
+            "cost" : 0
+        },
+        {
+            "id" : 26,
+            "name" : "BLUE_TENACIOUS_BOAR",
+            "tag" : "tenacious_boar",
+            "val" : 0,
+            "cost" : 0
+        },
+        {
+            "id" : 27,
+            "name" : "YELLOW_TENACIOUS_BOAR",
+            "tag" : "tenacious_boar",
+            "val" : 1,
+            "cost" : 0
+        },
+        {
+            "id" : 28,
+            "name" : "RED_TENACIOUS_BOAR",
+            "tag" : "tenacious_boar",
+            "val" : 2,
+            "cost" : 0
+        },
+        {
+            "id" : 29,
+            "name" : "GREEN_TENACIOUS_BOAR",
+            "tag" : "tenacious_boar",
+            "val" : 3,
+            "cost" : 0
         }
     ]
 }

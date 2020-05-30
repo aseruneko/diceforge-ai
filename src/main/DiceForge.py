@@ -14,12 +14,14 @@
 __author__ = "c3341, aseruneko"
 __date__ = "29 May 2020"
 
-# import Board
-from . import Player
+from main.Board import Board
 from main.Human import Human
+from main.Player import Player
 from main.Computer import Computer
 from main.IOInterface import IOInterface
 from main.Dice import Dice
+from main import resolve
+import random
 
 class DiceForge(IOInterface):
 
@@ -84,12 +86,21 @@ class DiceForge(IOInterface):
             Playerの内部のDicesにアクセスしてDiceを追加する。
     """
 
-    def __init__(self, player_distribution=["human","computer"], face_distribution_type="default", card_distribution_type="default", initial_dice_face_type="default"):
+    def __init__(self, player_distribution, face_distribution_type, card_distribution_type, initial_dice_face_type, round_max):
         self.player_num = len(player_distribution)
         self.round = 0
         self.face_distribution = self.make_face_distribution(face_distribution_type)
         self.card_distribution = [0] #仮実装
-        # self.board = Board(face_distribution, card_distribution)
+        if round_max == 0:
+            if self.player_num == 2:
+                self.round_max = 9
+            elif self.player_num == 3:
+                self.round_max = 10
+            elif self.player_num == 4:
+                self.round_max = 9
+        else:
+            self.round_max = round_max
+        self.board = Board(self.face_distribution, self.card_distribution)
         self.player_list = []
         for i in range(self.player_num): # distributionに基づくPlayerの作成
             if player_distribution[i] == "human":
@@ -100,20 +111,26 @@ class DiceForge(IOInterface):
         self.make_initial_face_dice(self.player_list, initial_dice_face_type)
 
     def game(self):
-        while(self.round < 2):
+        while(self.round < self.round_max):
             self.write("round" + str(self.round))
             for active_player in self.player_list:
                 self.write(str(active_player.id) + "'s turn")
 
-                #全員がダイスを振るって神の祝福を受け取る
+                #全員がダイスを振る
                 for player in self.player_list:
-                    player.receive_divine_blessings()
+                    resolve.resolve_effect(board = None, player = player, effect = "roll_2_dices")
+                    # player.receive_divine_blessings()
+
+                #全員がダイスに書かれている効果を適用する
+                for player in self.player_list:
+                    resolve.resolve_effect(board = None, player = player, effect = "resolve_2_dices")
 
                 #手番プレイヤーはカードの効果を解決する
                 active_player.card_action()
 
                 #faceの購入かカードの購入を選ぶ
                 self.choose_first_action(active_player)
+                active_player.dice_cost_list_you_buy_in_action = []
 
                 #追加アクションを行うか選ぶ
                 pass
@@ -136,7 +153,11 @@ class DiceForge(IOInterface):
                 self.write("face or card?")
                 command = self.read()
                 if command == "face":
-                    player.buy("face")
+                    while True:
+                        resolve.resolve_effect(board = self.board,player = player,effect = "buy_face")
+                        i = input("buy more? (y/n) ")
+                        if i == "n":
+                            break
                     break
                 elif command == "card":
                     player.buy("card")
@@ -165,19 +186,27 @@ class DiceForge(IOInterface):
         output = [0]
         if face_distribution_type == "default":
             if self.player_num == 2:
-                pass
-            if self.player_num == 3:
-                pass
-            if self.player_num == 4:
-                pass
+                output = [4,4,3,3,6,6,5,5,-1,-1,11,11,12,12,13,13,14,14,-1,-1]
+                x = random.sample([7,8,9,10],2)
+                output[8],output[9] = x[0],x[1]
+                y = random.sample([15,16,17,18],2)
+                output[18],output[19] = y[0],y[1]
+            elif self.player_num == 3 or self.player_num == 4:
+                output = [4,4,4,4,3,3,3,3,6,6,6,6,5,5,5,5,7,8,9,10,11,11,11,11,12,12,12,12,13,13,13,13,14,14,14,14,15,16,17,18]
         if face_distribution_type == "debug":
-            output = [0,0,0,0,0,0,0,0]
+            if self.player_num == 2:
+                output = list(range(20))
+            elif self.player_num == 3 or self.player_num == 4:
+                output = list(range(30) + range(10))
         return output
 
     def make_initial_face_dice(self, player_list, initial_dice_face_type):
         if initial_dice_face_type == "default":
-            pass
+            for player in player_list:
+                player.dices.append(Dice([5,0,0,0,0,0]))
+                player.dices.append(Dice([0,0,0,0,3,2]))
         elif initial_dice_face_type == "debug":
             for player in player_list:
                 player.dices.append(Dice([0,0,0,0,0,0]))
                 player.dices.append(Dice([0,0,0,0,0,0]))
+    

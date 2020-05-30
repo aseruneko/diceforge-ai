@@ -2,7 +2,7 @@
 
 ## FaceData.json
 
-| card_list |        |      |               |      |
+| face_list |        |      |               |      |
 | --------- | ------ | ---- | ------------- | ---- |
 | id        | name   | tag  | val           | cost |
 | 0         | DEBUG  | +    |  *辞書のリスト | 0    |
@@ -33,4 +33,7 @@
 
 ## CardData.json
 
-- 作成予定（未実装）
+| card_list |        |               |          |           |               |                |                |                   |             |
+| --------- | ------ | ------------- | -------- | --------- | ------------- | -------------- | -------------- | ----------------- | ----------- |
+| id        | name   | logical_name  | cost_sun | cost_moon | victory_point | instant_effect | passive_effect | activation_effect | description |
+| 0         | DEBUG  | デバッグ用のカ | 0        | 0         | 99            | NONE           | NONE           | NONE              | これはデバッ |

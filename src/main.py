@@ -14,6 +14,7 @@ __author__ = "aseruneko"
 __version__ = "0.0.1a"
 __date__ = "29 May 2020"
 
+
 from main import DiceForge
 
 """
@@ -42,6 +43,9 @@ from main import DiceForge
             "default"   -   デフォルトの組成を使用する（未実装）
             "debug"     -   デバッグ用の組成を使用する
 
+    round_max
+        起動するゲームのラウンド数。0にすると人数に応じたデフォルト値を使用する。
+
     __exit_flag
         ゲームが起動していない状態でのプログラムに対してのコマンド受付を終了するためのフラグ。
 
@@ -69,10 +73,11 @@ from main import DiceForge
 
 """
 
-player_distribution = ["human","computer"]
-face_distribution_type = "debug"
+player_distribution = ["human","human"]
+face_distribution_type = "default"
 card_distribution_type = "default"
 initial_dice_face_type = "debug"
+round_max = 2
 
 __exit_flag = False
 
@@ -91,7 +96,7 @@ def command_perse(command):
         print_help()
     if command == "start":
         print("> game starts...")
-        dice_forge = DiceForge.DiceForge(player_distribution, face_distribution_type, card_distribution_type, initial_dice_face_type)
+        dice_forge = DiceForge.DiceForge(player_distribution, face_distribution_type, card_distribution_type, initial_dice_face_type, round_max)
         dice_forge.game()
 
 def print_title():
