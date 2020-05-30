@@ -51,7 +51,7 @@ class Board(IOInterface):
     def show_playable_dice_face(self):
         output =""
         for playable_dice_num, playable_face in enumerate(self.face_distribution):
-            output += str(playable_dice_num) + ": " + str(Face(playable_face)) +"\n"
+            output += str(playable_dice_num) + ": " + str(Face(playable_face)) + " (" + str(Face.cost_list[playable_face]) + ")\n"
         self.write(output)   
         
     #def show_playable_cards(self):

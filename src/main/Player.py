@@ -34,6 +34,9 @@ class Player:
         resource
             プレイヤーが持つResource
 
+        dice_cost_list_you_buy_in_action
+            このアクション中に購入したダイスのコストの配列
+
     [インスタンスメソッド]
         diceroll():
             dices.topをランダムに変更する。
@@ -59,6 +62,7 @@ class Player:
         self.id = id
         self.dices = []
         self.resource = Resource.Resource()
+        self.dice_cost_list_you_buy_in_action = []
 
     def diceroll(self):
         for dice in self.dices:

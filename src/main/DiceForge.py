@@ -121,6 +121,7 @@ class DiceForge(IOInterface):
 
                 #faceの購入かカードの購入を選ぶ
                 self.choose_first_action(active_player)
+                active_player.dice_cost_list_you_buy_in_action = []
 
                 #追加アクションを行うか選ぶ
                 pass
@@ -143,7 +144,11 @@ class DiceForge(IOInterface):
                 self.write("face or card?")
                 command = self.read()
                 if command == "face":
-                    resolve.resolve_effect(board = self.board,player = player,effect = "buy_face")
+                    while True:
+                        resolve.resolve_effect(board = self.board,player = player,effect = "buy_face")
+                        i = input("buy more? (y/n) ")
+                        if i == "n":
+                            break
                     break
                 elif command == "card":
                     player.buy("card")
