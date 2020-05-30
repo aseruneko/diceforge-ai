@@ -13,6 +13,8 @@
 __author__ = "aseruneko"
 __date__ = "29 May 2020"
 
+import os, json
+
 class Card:
 
     """
@@ -51,18 +53,51 @@ class Card:
             インスタンスの持つ全ての変数を表示するデバック用メソッド。
 
     """
+    name_list = []
+    logical_name_list = []
+    cost_sun_list = []
+    cost_moon_list = []
+    victory_point_list = []
+    instant_effect_list = []
+    passive_effect_list = []
+    activation_effect_list = []
+    description_list = []
 
-    def __init__(self, name="", logical_name="", cost_sun=0, cost_moon=0, victory_point=0, instant_effect=None, passive_effect=None, activation_effect=None):
-        self.name = name
-        self.logical_name = logical_name
-        self.cost_sun = cost_sun
-        self.cost_moon = cost_moon
-        self.victory_point = victory_point
-        self.instant_effect = instant_effect
-        self.passive_effect = passive_effect
-        self.activation_effect = activation_effect
+    @classmethod
+    def load_card_data(cls):
+        # jsonを読む
+        path = os.path.join(os.path.dirname(__file__), 'data/CardData.json')
+        with open(path,encoding="utf-8_sig") as f:
+            j = json.load(f)
+        # 読んだjsonの内容をクラス変数に格納する
+        # 通し番号であるidでアクセスするよう設計されている
+        for card in j["card_list"]:
+            cls.name_list.append(card["name"])
+            cls.logical_name_list.append(card["logical_name"])
+            cls.cost_sun_list.append(card["cost_sun"])
+            cls.cost_moon_list.append(card["cost_moon"])
+            cls.victory_point_list.append(card["victory_point"])
+            cls.instant_effect_list.append(card["instant_effect"])
+            cls.passive_effect_list.append(card["passive_effect"])
+            cls.activation_effect_list.append(card["activation_effect"])
+            cls.description_list.append(card["description"])
 
-    def __print_all_variables(self):
+    def __init__(self, id):
+        # 初回はjsonの読み出し処理を実行
+        if len(Card.name_list) == 0:
+            Card.load_card_data()
+        # idに応じた値を引っ張り出してくる
+        self.name = Card.name_list[id]
+        self.logical_name = Card.logical_name_list[id]
+        self.cost_sun = Card.cost_sun_list[id]
+        self.cost_moon = Card.cost_moon_list[id]
+        self.victory_point = Card.victory_point_list[id]
+        self.instant_effect = Card.instant_effect_list[id]
+        self.passive_effect = Card.passive_effect_list[id]
+        self.activation_effect = Card.activation_effect_list[id]
+        self.description = Card.description_list[id]
+
+    def print_all_variables(self):
         output = ""
         output += "name: " + self.name + "\n"
         output += "logical_name: " + self.logical_name + "\n"
@@ -71,6 +106,7 @@ class Card:
         output += "instant_effect: " + str(self.instant_effect) + "\n"
         output += "passive_effect: " + str(self.passive_effect) + "\n"
         output += "activation_effect: " + str(self.activation_effect) + "\n"
+        output += "description: " + str(self.description) + "\n"
         print(output)
 
     def __str__(self):
@@ -78,5 +114,5 @@ class Card:
 
 # test code
 if __name__ == '__main__':
-    card = Card()
-    card.__print_all_variables()
+    card = Card(0)
+    card.print_all_variables()

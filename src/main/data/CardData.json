@@ -1,3 +1,16 @@
 {
-    ""
+    "card_list":[
+        {
+            "id" : 0,
+            "name" : "DEBUG",
+            "logical_name" : "デバッグ用カード",
+            "cost_sun" : 0,
+            "cost_moon" : 0,
+            "victory_point" : 99,
+            "instant_effect" : "NONE",
+            "passive_effect" : "NONE",
+            "activation_effect" : "NONE",
+            "description" : "これはデバッグ用のカードです"
+        }
+    ]
 }
