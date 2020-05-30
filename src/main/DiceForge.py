@@ -86,11 +86,20 @@ class DiceForge(IOInterface):
             Playerの内部のDicesにアクセスしてDiceを追加する。
     """
 
-    def __init__(self, player_distribution=["human","computer"], face_distribution_type="default", card_distribution_type="default", initial_dice_face_type="default"):
+    def __init__(self, player_distribution, face_distribution_type, card_distribution_type, initial_dice_face_type, round_max):
         self.player_num = len(player_distribution)
         self.round = 0
         self.face_distribution = self.make_face_distribution(face_distribution_type)
         self.card_distribution = [0] #仮実装
+        if round_max == 0:
+            if self.player_num == 2:
+                self.round_max = 9
+            elif self.player_num == 3:
+                self.round_max = 10
+            elif self.player_num == 4:
+                self.round_max = 9
+        else:
+            self.round_max = round_max
         self.board = Board(self.face_distribution, self.card_distribution)
         self.player_list = []
         for i in range(self.player_num): # distributionに基づくPlayerの作成
@@ -102,7 +111,7 @@ class DiceForge(IOInterface):
         self.make_initial_face_dice(self.player_list, initial_dice_face_type)
 
     def game(self):
-        while(self.round < 2):
+        while(self.round < self.round_max):
             self.write("round" + str(self.round))
             for active_player in self.player_list:
                 self.write(str(active_player.id) + "'s turn")
@@ -182,12 +191,12 @@ class DiceForge(IOInterface):
                 output[8],output[9] = x[0],x[1]
                 y = random.sample([15,16,17,18],2)
                 output[18],output[19] = y[0],y[1]
-            elif self.player_num == 3 and self.player_num == 4:
+            elif self.player_num == 3 or self.player_num == 4:
                 output = [4,4,4,4,3,3,3,3,6,6,6,6,5,5,5,5,7,8,9,10,11,11,11,11,12,12,12,12,13,13,13,13,14,14,14,14,15,16,17,18]
         if face_distribution_type == "debug":
             if self.player_num == 2:
                 output = list(range(20))
-            elif self.player_num == 3 and self.player_num == 4:
+            elif self.player_num == 3 or self.player_num == 4:
                 output = list(range(30) + range(10))
         return output
 

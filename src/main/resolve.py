@@ -76,8 +76,8 @@ def resolve_effect(board, player, effect):
 def resolve_face(player, face):
     if face.tag in ["gold", "sun", "moon", "vp"]:
         player.resource.add(face.tag, face.val)
-        print("> Player {0} yields {1} {2}".format(player.id, face.val, face.tag))
+        # print("> Player {0} yields {1} {2}".format(player.id, face.val, face.tag))
     elif face.tag == "+":
         for ef in face.val:
             player.resource.add(ef["tag"], ef["val"])
-            print("> Player {0} yields {1} {2}".format(player.id, ef["val"], ef["tag"]))
+            # print("> Player {0} yields {1} {2}".format(player.id, ef["val"], ef["tag"]))
