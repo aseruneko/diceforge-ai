@@ -189,7 +189,9 @@ class DiceForge(IOInterface):
 
     def make_initial_face_dice(self, player_list, initial_dice_face_type):
         if initial_dice_face_type == "default":
-            pass
+            for player in player_list:
+                player.dices.append(Dice([5,0,0,0,0,0]))
+                player.dices.append(Dice([0,0,0,0,3,2]))
         elif initial_dice_face_type == "debug":
             for player in player_list:
                 player.dices.append(Dice([0,0,0,0,0,0]))
