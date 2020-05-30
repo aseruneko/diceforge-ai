@@ -13,7 +13,7 @@
 """
 
 __author__ = "aseruneko, yuliicppy"
-__date__ = "29 May 2020"
+__date__ = "30 May 2020"
 
 class Resource:
 
@@ -44,18 +44,21 @@ class Resource:
         __init__():
             各リソースの初期上限値に基づいて、リソースを保管、操作できるようにする
 
+        add(target, addition):
         add_gold(addition):
         add_sun(addition):
         add_moon(addition):
         add_victory_point(addition):
             各リソースをaddition分、上限値を加味して増加させる
 
-        substruct_gold(substruction):
-        substruct_sun(substruction):
-        substruct_moon(substruction):
-        substruct_victory_point(substruction):
+        substract(target, substraction):
+        substract_gold(substraction):
+        substract_sun(substraction):
+        substract_moon(substraction):
+        substract_victory_point(substraction):
             各リソースをsubstruction分、最低0まで低減させる
 
+        expand(target, expansion):
         expand_gold_max(expansion):
         expand_sun_max(expansion):
         expand_moon_max(expansion):
@@ -130,6 +133,34 @@ class Resource:
         output += "Moon: " + str(self.moon) + ", "
         output += "VictoryPoint: " + str(self.victory_point)
         print(output)
+
+    def add(self, target, addition):
+        if target == "gold":
+            self.add_gold(addition)
+        elif target == "sun":
+            self.add_sun(addition)
+        elif target == "moon":
+            self.add_moon(addition)
+        elif target == "vp":
+            self.add_victory_point(addition)
+
+    def substract(self, target, substraction):
+        if target == "gold":
+            self.substract_gold(substraction)
+        elif target == "sun":
+            self.substract_sun(substraction)
+        elif target == "moon":
+            self.substract_moon(substraction)
+        elif target == "vp":
+            self.substract_victory_point(substraction)
+
+    def expand(self, target, expansion):
+        if target == "gold":
+            self.expand_gold_max(expansion)
+        elif target == "sun":
+            self.expand_sun_max(expansion)
+        elif target == "moon":
+            self.expand_moon_max(expansion)
     
 # test code
 if __name__ == '__main__':

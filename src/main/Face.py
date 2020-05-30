@@ -98,42 +98,42 @@ class Face:
         self.val = Face.val_list[id]
         self.cost = Face.cost_list[id]
 
-    def __single_effect(self, tag, val, player):
-        if tag == "gold":
-            player.resource.add_gold(val)
-        if tag == "vp":
-            player.resource.add_victory_point(val)
-        if tag == "sun":
-            player.resource.add_sun(val)
-        if tag == "moon":
-            player.resource.add_moon(val)
+    # def __single_effect(self, tag, val, player):
+    #     if tag == "gold":
+    #         player.resource.add_gold(val)
+    #     if tag == "vp":
+    #         player.resource.add_victory_point(val)
+    #     if tag == "sun":
+    #         player.resource.add_sun(val)
+    #     if tag == "moon":
+    #         player.resource.add_moon(val)
 
-    def effect(self, player):
-        if self.tag in ["gold", "vp", "sun", "moon"]:
-            self.__single_effect(self.tag, self.val, player)
+    # def effect(self, player):
+    #     if self.tag in ["gold", "vp", "sun", "moon"]:
+    #         self.__single_effect(self.tag, self.val, player)
 
-        if self.tag == "+":
-            for item in self.val:
-                self.__single_effect(item["tag"], item["val"], player)
+    #     if self.tag == "+":
+    #         for item in self.val:
+    #             self.__single_effect(item["tag"], item["val"], player)
 
-        if self.tag == "?":
-            item = random.choice(self.val)#仮実装
-            self.__single_effect(item[0], item[1], player)
+    #     if self.tag == "?":
+    #         item = random.choice(self.val)#仮実装
+    #         self.__single_effect(item[0], item[1], player)
 
-        if self.tag == "*3":
-            of = __get_other_face()
-            if of.tag in ["gold", "vp", "sun", "moon"]:
-                self.__single_effect(of.tag, of.val * 3, player)
-            if of.tag == "+":
-                for item in of.val:
-                    self.__single_effect(item[0], item[1] * 3, player)
-            if of.tag == "?":
-                item = random.choice(self.val)#仮実装
-                self.__single_effect(item[0], item[1] * 3, player)
+    #     if self.tag == "*3":
+    #         of = __get_other_face()
+    #         if of.tag in ["gold", "vp", "sun", "moon"]:
+    #             self.__single_effect(of.tag, of.val * 3, player)
+    #         if of.tag == "+":
+    #             for item in of.val:
+    #                 self.__single_effect(item[0], item[1] * 3, player)
+    #         if of.tag == "?":
+    #             item = random.choice(self.val)#仮実装
+    #             self.__single_effect(item[0], item[1] * 3, player)
 
-        if self.tag == "mirror":
-            of = self.__get_other_face()
-            of.effect(player)
+    #     if self.tag == "mirror":
+    #         of = self.__get_other_face()
+    #         of.effect(player)
 
     def __str__(self):
         output = ""
