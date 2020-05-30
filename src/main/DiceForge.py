@@ -20,6 +20,7 @@ from main.Player import Player
 from main.Computer import Computer
 from main.IOInterface import IOInterface
 from main.Dice import Dice
+from main import resolve
 
 class DiceForge(IOInterface):
 
@@ -82,14 +83,6 @@ class DiceForge(IOInterface):
         make_initial_dice_face(player_list, initial_dice_face_type):
             最初のダイスの組成タイプを受け取り、各プレイヤーに対して最初のダイスを発行するコマンド。
             Playerの内部のDicesにアクセスしてDiceを追加する。
-
-        resolve_effect(player, effect):
-            何らかのエフェクトを処理するメソッド。
-            将来的にどこかに切り出したい。
-
-        resolve_face(player, face):
-            一つのフェイズを処理するメソッド。
-            将来的にどこかに切り出したい。
     """
 
     def __init__(self, player_distribution=["human","computer"], face_distribution_type="default", card_distribution_type="default", initial_dice_face_type="default"):
@@ -115,12 +108,12 @@ class DiceForge(IOInterface):
 
                 #全員がダイスを振る
                 for player in self.player_list:
-                    self.resolve_effect(player, "roll_2_dices")
+                    resolve.resolve_effect(player, "roll_2_dices")
                     # player.receive_divine_blessings()
 
                 #全員がダイスに書かれている効果を適用する
                 for player in self.player_list:
-                    self.resolve_effect(player, "resolve_2_dices")
+                    resolve.resolve_effect(player, "resolve_2_dices")
 
                 #手番プレイヤーはカードの効果を解決する
                 active_player.card_action()
@@ -196,22 +189,3 @@ class DiceForge(IOInterface):
             for player in player_list:
                 player.dices.append(Dice([0,0,0,0,0,0]))
                 player.dices.append(Dice([0,0,0,0,0,0]))
-
-    def resolve_effect(self, player, effect):
-        print("> [Player {0}] causes effect [{1}]".format(player.id, effect)) # 開発用のログ
-        if effect == "roll_2_dices":
-            for dice in player.dices:
-                dice.roll()
-                print("> dice top is {0}".format(dice.top.name))
-        elif effect == "resolve_2_dices":
-            for dice in player.dices:
-                self.resolve_face(player, dice.top)
-
-    def resolve_face(self, player, face):
-        if face.tag in ["gold", "sun", "moon", "vp"]:
-            player.resource.add(face.tag, face.val)
-            print("> Player {0} yields {1} {2}".format(player.id, face.val, face.tag))
-        elif face.tag == "+":
-            for ef in face.val:
-                player.resource.add(ef["tag"], ef["val"])
-                print("> Player {0} yields {1} {2}".format(player.id, ef["val"], ef["tag"]))
