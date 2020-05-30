@@ -39,14 +39,19 @@ def resolve_effect(board, player, effect):
     elif effect == "buy_face":
         board.show_playable_dice_face()
         while(True):
-            chosen_face_number = input("choose number you want to buy (your gold is {0})\n".format(player.resource.gold))
-            if chosen_face_number.isdecimal() == True:
+            chosen_face_number = input("choose number you want to buy (your gold is {0}) (or exit)\n".format(player.resource.gold))
+            if chosen_face_number == "exit":
+                return
+            elif chosen_face_number.isdecimal() == True:
                 chosen_face_number = int(chosen_face_number)
                 if 0 <= chosen_face_number and chosen_face_number <= len(board.face_distribution) - 1:
                     if Face.cost_list[board.face_distribution[chosen_face_number]] in player.dice_cost_list_you_buy_in_action:
                         print("you've already bought a face in the same cost.")
                     else:
-                        break
+                        if player.resource.gold < Face.cost_list[board.face_distribution[chosen_face_number]]:
+                            print("you don't have enough gold.")
+                        else:
+                            break
         chosen_face_id = board.face_distribution.pop(chosen_face_number)
         all_faces_list = []
         all_faces_list.extend(player.dices[0].faces)
@@ -64,6 +69,7 @@ def resolve_effect(board, player, effect):
         else:
             player.dices[0].replace(Face(chosen_face_id),chosen_replace_number)
         player.dice_cost_list_you_buy_in_action.append(Face.cost_list[chosen_face_id])
+        player.resource.substract("gold", Face.cost_list[chosen_face_id])
 
 
 
