@@ -23,11 +23,11 @@ class Board(IOInterface):
     """
     [インスタンス変数]
 
-        remain_faces
+        face_distribution
             ゲームボードの上に残っている鍛造可能なフェイスの一覧。
             Faceのリストになるだろうが、未実装
 
-        remain_cards
+        card_distribution
             ゲームボードの上に残っている購入可能なカードの一覧。
             Cardのリストになるだろうが、未実装
 
@@ -51,7 +51,7 @@ class Board(IOInterface):
     def show_playable_dice_face(self):
         output =""
         for playable_dice_num, playable_face in enumerate(self.face_distribution):
-            output += str(playable_dice_num) + str(Face(playable_face)) +"\n"
+            output += str(playable_dice_num) + ": " + str(Face(playable_face)) +"\n"
         self.write(output)   
         
     #def show_playable_cards(self):

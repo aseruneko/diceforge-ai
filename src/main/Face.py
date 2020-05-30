@@ -137,7 +137,7 @@ class Face:
 
     def __str__(self):
         output = ""
-        output += self.tag + " " + str(self.val)
+        output += self.name
         return output
 
     def __get_other_face(self):

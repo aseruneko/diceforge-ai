@@ -38,14 +38,24 @@ def resolve_effect(board, player, effect):
             resolve_face(player, dice.top)
     elif effect == "buy_face":
         board.show_playable_dice_face()
-        chosen_face_number = int(input("choose number+\n"))
+        while(True):
+            chosen_face_number = input("choose number you want to buy\n")
+            if chosen_face_number.isdecimal() == True:
+                chosen_face_number = int(chosen_face_number)
+                if 0 <= chosen_face_number and chosen_face_number <= len(board.face_distribution) - 1:
+                    break
         chosen_face_id = board.face_distribution.pop(chosen_face_number)
         all_faces_list = []
         all_faces_list.extend(player.dices[0].faces)
         all_faces_list.extend(player.dices[1].faces)
         for face_index_number , face_number in enumerate(all_faces_list):
             print("{0}: {1}".format(face_index_number,str(face_number)))
-        chosen_replace_number = int(input("choose number"+"\n"))
+        while(True):
+            chosen_replace_number = input("choose number you want to discard\n")
+            if chosen_replace_number.isdecimal() == True:
+                chosen_replace_number = int(chosen_replace_number)
+                if 0 <= chosen_replace_number and chosen_replace_number <= len(all_faces_list) - 1:
+                    break
         if chosen_replace_number > 5 :
             player.dices[1].replace(Face(chosen_face_id),chosen_replace_number-6)
         else:
